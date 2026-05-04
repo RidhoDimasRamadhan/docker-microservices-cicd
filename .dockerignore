@@ -1,0 +1,45 @@
+# ===== File yang TIDAK perlu di-copy ke Docker image =====
+# Tujuannya: bikin image lebih kecil & build lebih cepat
+
+# Dependencies (install di dalam container, bukan copy dari host)
+node_modules/
+npm-debug.log*
+
+# Git & version control
+.git/
+.gitignore
+.gitattributes
+
+# Environment files (set via docker run -e atau docker-compose)
+.env
+.env.*
+
+# Documentation
+README.md
+docs/
+*.md
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build artifacts (bakal di-build ulang di container)
+dist/
+build/
+coverage/
+
+# Testing
+*.test.js
+*.spec.js
+__tests__/
+
+# CI/CD config (ga perlu di image)
+.github/
+.gitlab-ci.yml
+
+# Docker meta (anti-loop)
+Dockerfile
+docker-compose*.yml
+.dockerignore
